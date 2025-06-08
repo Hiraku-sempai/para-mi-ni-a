@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>para mi niña hermosa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: crimson;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      animation: glow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { background-color: crimson; }
+      100% { background-color: deeppink; }
+    }
+    #luna {
+        position: fixed;
+        bottom:  -100px;
+        right: 50px;
+        width: 80px;
+        height: 80px;
+        background:radial-gradient(circle, #fdf5e6,#f0e68c);
+        border-radius: 50%;
+        box-shadow: 0 0 30px #fff8dc;
+        opacity: 0;
+        transition: bottom 2s ease, opacity 2s ease;
+        z-index: 5;
+    }
+    body.modo-noche #luna {
+        bottom:  80%;
+        opacity: 1;
+    }
+
+    
+
+    #sans {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 80px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .modo-noche {
+      background-color: black !important;
+      color: white;
+      transition: background-color 0.5s ease;
+    }
+
+    .modo-noche #lovebtn {
+      background-color: #222;
+      color: white;
+    }
+
+    #lovebtn {
+      background-color: rgb(131, 2, 2);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 100;
+      position: relative;
+    }
+    #nubes_superiores {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 10;
+     } 
+     
+     .nube {
+      position: absolute;
+      top: 20px;
+      height: 100px;
+      opacity: 0.9;
+      animation: flotar 20s linear infinite;
+     }
+    @keyframes flotar {
+      0% { transform: translatex(-200);}
+      100% {transform: translatex(110vw);
+       }
+    }
+    .heart {
+      position: fixed;
+      font-size: 20px;
+      color: red;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    #nochebtn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+    }
+
+   
+
+  </style>
+</head>
+<body>
+<div id = "nubes_superiores"></div>
+<canvas id="stars"></canvas>
+<div id = "luna"></div>
+<button id="lovebtn">pulsar aquí</button>
+<div id="phrasedisplay"></div>
+<button id="nochebtn">🌙 Modo Noche</button>
+<img id="sans" src="spinning-spin.webp" alt="Sans" width="100">
+
+<script>
+  const phrasesOriginal = [
+    "Eres inteligente.",
+    "Sos muy hermosa.",
+    "Tu sonrisa me llena de felicidad.",
+    "Tus ojos son una obra de arte.",
+    "Te amo.",
+    "Nunca te rindas.",
+    "Eres super guapa ;).",
+    "Eres mi vida.",
+    "Eres mi todo."
+  ];
+  let remainingphrases = [...phrasesOriginal];
+
+  const lovebtn = document.getElementById("lovebtn");
+  const nochebtn = document.getElementById("nochebtn");
+  const sans = document.getElementById("sans");
+
+  // Efecto máquina de escribir
+  function typewriter(text, element, i = 0) {
+    if (i === 0) element.textContent = "";
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      setTimeout(() => typewriter(text, element, i + 1), 60);
+    }
+  }
+
+  // Posición aleatoria
+  function posicionramdon() {
+    const x = Math.random() * (window.innerWidth - 300);
+    const y = Math.random() * (window.innerHeight - 100);
+    return { x, y };
+  }
+  //nubes
+  const contenedornubes = document.getElementById('nubes_superiores');
+  const imagenesnubes = ['nubemejor.webp', 'nubesd.webp']
+
+  function crearnubes() {
+    const img = document.createElement('img');
+    img.src = imagenesnubes[Math.floor(Math.random() * imagenesnubes.length)];
+    img.classList.add('nube');
+    img.style.left = `${Math.random() * 20 - 10}vw`  
+    img.style.animationDuration  = `${15 + Math.random() * 10}s`;
+
+    contenedornubes.appendChild(img);
+
+    setTimeout(() => img.remove(), 25000);
+  }
+    //eliminar la nube despuess que slaga de la pantalla
+  setInterval(crearnubes, 5000)
+  crearnubes();
+setTimeout(crearnubes, 2000);
+
+  
+  // Color aleatorio
+  function colorramdon() {
+    const letras = "123456789ABCDEF";
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letras[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+
+  // Evento del botón principal
+  lovebtn.addEventListener("click", () => {
+    if (remainingphrases.length === 0) {
+      remainingphrases = [...phrasesOriginal];
+    }
+
+    // Crear corazones
+    const intervalId = setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.top = `${window.innerHeight}px`;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 500);
+
+    setTimeout(() => clearInterval(intervalId), 2000);
+
+    // Mostrar frase
+    const index = Math.floor(Math.random() * remainingphrases.length);
+    const phrase = remainingphrases.splice(index, 1)[0];
+    const phrasediv = document.createElement("div");
+
+    phrasediv.style.position = "absolute";
+    phrasediv.style.fontFamily = "'Press Start 2P', cursive";
+    phrasediv.style.fontSize = "18px";
+    phrasediv.style.color = colorramdon();
+    const pos = posicionramdon();
+    phrasediv.style.left = `${pos.x}px`;
+    phrasediv.style.top = `${pos.y}px`;
+
+    document.body.appendChild(phrasediv);
+    typewriter(phrase, phrasediv);
+    setTimeout(() => phrasediv.remove(), 5000);
+  });
+
+  // Evento de Modo Noche
+  nochebtn.addEventListener("click", () => {
+    document.body.classList.toggle("modo-noche");
+  });
+
+  // Evento de Sans
+  sans.addEventListener("click", () => {
+    const mensaje = document.createElement("div");
+    mensaje.textContent = "";
+    mensaje.style.position = "fixed";
+    mensaje.style.bottom = "120px";
+    mensaje.style.right = "20px";
+    mensaje.style.background = "rgba(0,0,0,0.7)";
+    mensaje.style.color = "white";
+    mensaje.style.padding = "10px";
+    mensaje.style.borderRadius = "10px";
+    mensaje.style.fontFamily = "'Press Start 2P', cursive";
+    mensaje.style.fontSize = "12px";
+    mensaje.style.zIndex = "1001";
+
+    document.body.appendChild(mensaje);
+
+    const texto = "eres mi ❤️, estar contigo es como soñar despierto ";
+    function escribirtexto(i = 0) {
+      if (i < texto.length) {
+        mensaje.textContent += texto.charAt(i);
+        setTimeout(() => escribirtexto(i + 1), 50);
+      }
+    }
+    escribirtexto();
+
+    setTimeout(() => {
+      mensaje.remove();
+    }, 5000);
+  });
+
+  // Estrellas al fondo
+  const canvas = document.getElementById("stars");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stars = Array.from({ length: 100 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 2,
+    speed: Math.random() * 0.5 + 0.2
+  }));
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let star of stars) {
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+      star.y -= star.speed;
+      if (star.y < 0) star.y = canvas.height;
+    }
+    requestAnimationFrame(drawStars);
+  }
+  drawStars();
+
+window.addEventListener('rzine', ( ) => {
+  canvas.width = window.innerHeight;
+  canvas.height = window.innerHeight;
+});
+
+</script>
+
+</body>
+</html>
