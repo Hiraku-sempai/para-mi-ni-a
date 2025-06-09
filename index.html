@@ -123,6 +123,23 @@
       right: 10px;
       z-index: 1000;
     }
+    
+    #galeriabtn {
+      background-color: #eb3966;
+      color: black;
+      font-family: 'press start 2p' , cursive;
+      padding: 15px 25px;
+      font-size: 14px;
+      border: none;
+      border-radius: 15px;
+      margin-top: -10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    #galeriabtn:hover {
+      transform: scale(1.1);
+    }
+    
 
    
 
@@ -130,6 +147,9 @@
 </head>
 <body>
 <div id = "nubes_superiores"></div>
+<a href="galeria.html">
+  <button id="galeriabtn"> 🌹 ver Galeria</button>
+</a>
 <canvas id="stars"></canvas>
 <div id = "luna"></div>
 <button id="lovebtn">pulsar aquí</button>
@@ -306,6 +326,9 @@ window.addEventListener('rzine', ( ) => {
   canvas.width = window.innerHeight;
   canvas.height = window.innerHeight;
 });
+
+
+
 
 </script>
 
