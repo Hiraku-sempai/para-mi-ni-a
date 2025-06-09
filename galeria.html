@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Galería para ti 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: mistyrose;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .imagen-con-mensaje {
+      text-align: center;
+      transform: translateY(100px);
+      opacity: 0;
+      animation: aparecer 1s ease-out forwards;
+    }
+
+    .imagen-con-mensaje:nth-child(1) { animation-delay: 0s; }
+    .imagen-con-mensaje:nth-child(2) { animation-delay: 0.2s; }
+    .imagen-con-mensaje:nth-child(3) { animation-delay: 0.4s; }
+    .imagen-con-mensaje:nth-child(4) { animation-delay: 0.6s; }
+    .imagen-con-mensaje:nth-child(5) { animation-delay: 0.8s; }
+    .imagen-con-mensaje:nth-child(6) { animation-delay: 1s; }
+
+    @keyframes aparecer {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .mensaje {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #e91e63;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+  <a href="index.html">⬅️ Volver a la carta</a>
+  <h1>🌸 Galería de fotos que me recuerdan a ti🌸</h1>
+  <div class="galeria">
+    <div class="imagen-con-mensaje">
+        <img src="imgg1.jpg" alt="imagen 1">
+        <div class = "mensaje">esta imagen de este gatito me recuerda a cuandon estas feliz💕</div>
+    </div>
+    <div class = "imagen-con-mensaje">
+        <img src="imgg2.jpg" alt="imagen 2">
+        <div class = "mensaje">vale, este gatito me recuerda ala carita que pusiste cuando estabamos junstos(≧▽≦)</div>
+    </div>
+    <div class ="imagen-con-mensaje">
+        <img src = "imgg3.jpg" alt="imagen 3">
+        <div class = " mensaje">este gatito me recuerda a cuando estabas feliz comiendo tu heladito de fresa 🍧</div>
+    </div>
+    <div class = "imagen-con-mensaje">
+        <img src = "imgg5.jpg" alt = "imagen 4">
+        <div class = "mensaje"> esta me recuerda mucho a tu cara cuando tienes los ojos cerrados</div>
+    </div>
+    <div class = "imagen-con-mensaje">
+        <img src = "images.jpeg" alt = "imagen 5">
+        <div class = "mensaje"> este gatito es tierno y asi te imagino cuando me dices "te amo"</div>
+    </div>
+    <div class = "imagen-con-mensaje">
+        <img src = "e2f86d676a5ec48c1603f19c4728f27c.jpg" alt = "imagen 6">
+        <div class = "mensaje"> asi te imagino cuando estamos jugando en los pvp jsjsjsj😗</div>
+    </div>
+    </div>
+</body>
+</html>
