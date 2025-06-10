@@ -5,6 +5,8 @@
   <title>Galería para ti 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+
+    
     body {
       background-color: mistyrose;
       font-family: 'Press Start 2P', cursive;
@@ -49,7 +51,20 @@
       border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
-
+    .btn-carta {
+      background-color: #f48fb1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-family: 'press start 2P', cursive;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+.btn-carta:hover{
+  background-color: #ec407a;
+}
     .mensaje {
       margin-top: 10px;
       font-size: 12px;
@@ -67,6 +82,18 @@
 </head>
 <body>
   <a href="index.html">⬅️ Volver a la carta</a>
+
+<audio id="musiquita" loop>
+  <source src="musiquita.mp3" type="audio/mpeg">
+  tu navegador no soporta audio HTML5.
+</audio>
+
+<button id="musiquita" onclick="toggleMusica()" class="btn-carta">
+  ▶️ Reproducir música
+</button>
+
+<button onclick="location.href='index.html'" class = "btn- carta">💌 ver la carta</button>
+
   <h1>🌸 Galería de fotos que me recuerdan a ti🌸</h1>
   <div class="galeria">
     <div class="imagen-con-mensaje">
@@ -94,5 +121,21 @@
         <div class = "mensaje"> asi te imagino cuando estamos jugando en los pvp jsjsjsj😗</div>
     </div>
     </div>
+
+    <script>
+
+      const audio = document.getElementById('musiquita');
+      const boton = document.getElementById('botomusica');
+
+      function toggleMusica(){
+        if (audio.paused){
+          audio.play();
+          boton.textContent = " ⏸️pausar musica";
+        } else {
+          audio.pause();
+          boton.textContent = "▶️ reproducir musica";
+        }
+      }
+    </script>
 </body>
 </html>
