@@ -37,6 +37,8 @@
     .imagen-con-mensaje:nth-child(4) { animation-delay: 0.6s; }
     .imagen-con-mensaje:nth-child(5) { animation-delay: 0.8s; }
     .imagen-con-mensaje:nth-child(6) { animation-delay: 1s; }
+    .imagen-con-mensaje:nth-child(7) {animation-delay: 1.2s;}
+    .imagen-con-mensaje:nth-child(8) {animation-delay: 1.4s;}
 
     @keyframes aparecer {
       to {
@@ -81,25 +83,26 @@
   </style>
 </head>
 <body>
-  <a href="index.html">⬅️ Volver a la carta</a>
 
 <audio id="musiquita" loop>
   <source src="musiquita.mp3" type="audio/mpeg">
   tu navegador no soporta audio HTML5.
 </audio>
-
-<button id="musiquita" onclick="toggleMusica()" class="btn-carta">
+<button id="botomusica" onclick="toggleMusica()" class="btn-carta">
   ▶️ Reproducir música
+</button>
+<button onclick="location.href='carta.html'" class="btn-carta">
+  💝 siguiente 💝
 </button>
 
 <button onclick="location.href='index.html'" class = "btn- carta">💌 ver la carta</button>
 
   <h1>🌸 Galería de fotos que me recuerdan a ti🌸</h1>
   <div class="galeria">
-    <div class="imagen-con-mensaje">
-        <img src="imgg1.jpg" alt="imagen 1">
-        <div class = "mensaje">esta imagen de este gatito me recuerda a cuandon estas feliz💕</div>
-    </div>
+<div class="imagen-con-mensaje">
+  <img src="images12.jpg" alt="imagen 7">
+  <div class="mensaje">así tú te miras cuando estás feliz o sonriendo 💗</div>
+</div>
     <div class = "imagen-con-mensaje">
         <img src="imgg2.jpg" alt="imagen 2">
         <div class = "mensaje">vale, este gatito me recuerda ala carita que pusiste cuando estabamos junstos(≧▽≦)</div>
@@ -120,7 +123,15 @@
         <img src = "e2f86d676a5ec48c1603f19c4728f27c.jpg" alt = "imagen 6">
         <div class = "mensaje"> asi te imagino cuando estamos jugando en los pvp jsjsjsj😗</div>
     </div>
+    <div class = " imagen-con-mensaje">
+        <img src = "images12.jpg" alt = "imagen 7">
+        <div class = "mensaje" >asi tu te miras cuando estas felix o sonriendo 💗</div>
     </div>
+    <div class = "imagen-con-mensaje">
+      <img src = "asd.jpg" alt = "imagen 8">
+      <div class = "mensaje">y mira te regalo esta flor ya que si lo hiciera en persona te llega marchita sjsjsjss 🌷</div>
+    </div>
+
 
     <script>
 

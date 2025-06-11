@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale = 1.0"
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
   <meta charset="UTF-8">
   <title>para mi niña hermosa</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -149,14 +149,53 @@
     #galeriabtn:hover {
       transform: scale(1.1);
     }
-    
 
-   
+ .imagendetwilinght {
+  position: fixed;
+  top: 20px;
+  left: -120px; /* Comienza fuera de pantalla a la izquierda */
+  width: 100px;
+  z-index: 100;
+  animation: movertwilight 7s infinite linear;
+}
+
+@keyframes movertwilight {
+  0% {
+    left: -120px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.titulodeaniversario {
+    position: relative;
+  top: 40px;
+  color: #fffacd;
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  animation: aparecerTitulo 2s ease-out;
+  margin-bottom: 20px;
+}
+@keyframes aparecertitulo {
+from {
+  opacity: 0;
+  transform: translateY(-200px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
 
   </style>
 </head>
 <body>
 <div id = "nubes_superiores"></div>
+<h1 class = "feliz aniversario mi amor"> 🎀muy feliz aniversario mi amor🎀</h1>
+<h2 class = "cada dia a tu lado es un sueño">🎆cada dia a tu lado es un sueño🎆</h2>
 <a href="galeria.html">
   <button id="galeriabtn"> 🌹 ver Galeria</button>
 </a>
@@ -166,7 +205,7 @@
 <div id="phrasedisplay"></div>
 <button id="nochebtn">🌙 Modo Noche</button>
 <img id="sans" src="spinning-spin.webp" alt="Sans" width="100">
-
+<img src="twilight.webp" class="imagendetwilinght" alt="twilight">
 <script>
   const phrasesOriginal = [
     "Eres inteligente.",
@@ -177,7 +216,11 @@
     "Nunca te rindas.",
     "Eres super guapa ;).",
     "Eres mi vida.",
-    "Eres mi todo."
+    "Eres mi todo.",
+    "enorgulleces a los de tu alrededor",
+    "tienes un buen gusto",
+    "me encantan tus ojos",
+    "eres un rayo de lus"
   ];
   let remainingphrases = [...phrasesOriginal];
 
@@ -336,10 +379,6 @@ window.addEventListener('rzine', ( ) => {
   canvas.width = window.innerHeight;
   canvas.height = window.innerHeight;
 });
-
-
-
-
 </script>
 
 </body>
